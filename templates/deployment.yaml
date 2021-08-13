@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "simpleweb.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
+  {{- if not .Values.kedascaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:

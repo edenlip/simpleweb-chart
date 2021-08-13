@@ -1,0 +1,27 @@
+{{- if .Values.kedascaling.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+ name: {{ include "simpleweb.fullname" . }}
+ labels: {{- include "simpleweb.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    name: {{ include "simpleweb.fullname" . }}
+  minReplicaCount: {{ .Values.kedascaling.minReplicas }}
+  maxReplicaCount: {{ .Values.kedascaling.maxReplicas }}
+  triggers:
+  - type: cpu
+    metadata:
+      type: Utilization
+      value: {{ .Values.kedascaling.CPUUtilization }}
+  - type: memory
+    metadata:
+      type: Utilization
+      value: {{ .Values.kedascaling.MemoryUtilization }}
+  - type: cron
+    metadata:
+      timezone: {{ .Values.kedascaling.timezone }}
+      start: "{{ .Values.kedascaling.startcron }}"
+      end: "{{ .Values.kedascaling.endcron }}"
+      desiredReplicas: {{ .Values.kedascaling.desiredReplicas }}
+{{- end }}
