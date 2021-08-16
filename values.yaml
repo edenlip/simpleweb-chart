@@ -44,11 +44,13 @@ ingress:
   className: ""
   annotations: 
     kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
   hosts:
-          - host: devops-interview-c125f5b8.hcp.westeurope.azmk8s.io 
+    - host: bla  
       paths:
-        - path: /eden
+        - path: /eden(/|$)(.*)
           pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
