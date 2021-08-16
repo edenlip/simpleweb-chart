@@ -13,15 +13,15 @@ spec:
   - type: cpu
     metadata:
       type: Utilization
-      value: {{ .Values.kedascaling.CPUUtilization }}
+      value: "{{ .Values.kedascaling.CPUUtilization }}"
   - type: memory
     metadata:
       type: Utilization
-      value: {{ .Values.kedascaling.MemoryUtilization }}
+      value: "{{ .Values.kedascaling.MemoryUtilization }}"
   - type: cron
     metadata:
       timezone: {{ .Values.kedascaling.timezone }}
       start: "{{ .Values.kedascaling.startcron }}"
       end: "{{ .Values.kedascaling.endcron }}"
-      desiredReplicas: {{ .Values.kedascaling.desiredReplicas }}
+      desiredReplicas: "{{ .Values.kedascaling.desiredReplicas }}"
 {{- end }}
