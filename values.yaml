@@ -76,8 +76,8 @@ kedascaling:
   CPUUtilization: 10
   MemoryUtilization: 10
   timezone:  Etc/UTC
-  startcron: "* 12 * * *"
-  endcron: "* 21 * * *"
+  startcron: "* 8 * * *"
+  endcron: "* 12 * * *"
   desiredReplicas: 2
 
 nodeSelector: {}
